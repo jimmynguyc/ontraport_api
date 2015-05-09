@@ -1,6 +1,8 @@
 # OntraportApi
 
-TODO: Write a gem description
+A Ruby-lang wrapper for Ontraport's REST JSON API 
+
+https://api.ontraport.com/doc/
 
 ## Installation
 
@@ -20,12 +22,47 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Basic example: 
+
+```ruby
+require 'ontraport_api'
+
+client = OntraportApi::Client.new('app-id','app-key')
+
+search_results = client.get_contacts({ search: 'me@jimmyngu.com' })
+puts search_results['data']
+```
+
+## Supported APIs
+
+### Contacts
+
+```ruby
+client.get_contact(id)
+client.new_contact(contact_params)
+client.update_contact(contact_params)
+client.contact_fields(format)
+client.add_tags(tag_ids, contacts_criteria)
+client.remove_tags(tag_ids, contacts_criteria)
+client.get_contacts(search_criteria)
+```
+
+See https://api.ontraport.com/doc/ on details of parameters.
+
+Note: Products API not available yet at the new JSON API.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/ontraport_api/fork )
+1. Fork it ( https://github.com/jimmynguyc/ontraport_api/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+
+## TODO Lists
+
+- Forms API
+- Transactions API
+- Messages API
+- Tasks API
