@@ -47,6 +47,12 @@ client.remove_tags(tag_ids, contacts_criteria)  # Remove Tags from Selected Cont
 client.get_contacts(search_criteria)            # Get List of Contacts based on Search Criteria
 ```
 
+### Sequences
+
+```ruby
+client.get_sequences    # Get all sequences
+```
+
 See https://api.ontraport.com/doc/ on details of parameters.
 
 Note: Products API not available yet at the new JSON API.
