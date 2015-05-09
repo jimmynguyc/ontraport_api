@@ -33,7 +33,7 @@ search_results = client.get_contacts({ search: 'me@jimmyngu.com' })
 puts search_results['data']
 ```
 
-## Supported API
+## Supported APIs
 
 ### Contacts
 
