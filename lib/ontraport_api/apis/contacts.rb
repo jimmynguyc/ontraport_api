@@ -50,7 +50,7 @@ module OntraportApi
         query_contacts(conditions.merge({ add_list: tag_ids }))
       end
 
-      def get_contacts(ids, conditions = {})
+      def get_contacts(conditions = {})
         default_conditions = {
           performAll: true,
           sortDir: 'asc',
