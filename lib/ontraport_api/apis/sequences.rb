@@ -10,9 +10,9 @@ module OntraportApi
         query_sequences
       end
 
-      def query_sequences(payload)
+      def query_sequences(payload = {})
         method, path = SEQUENCES_API_METHODS_AND_PATHS[caller[0][/`.*'/][1..-2]]
-        query(method, path, payload.merge({ objectID: CONTACTS_OBJECT_ID }))
+        query(method, path, payload.merge({ objectID: SEQUENCES_OBJECT_ID }))
       end
     end
   end
