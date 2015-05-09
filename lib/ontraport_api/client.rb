@@ -1,3 +1,4 @@
+require 'httparty'
 require_relative 'apis/contacts'
 require_relative 'apis/forms'
 require_relative 'apis/messages'
