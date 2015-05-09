@@ -1,6 +1,6 @@
 # OntraportApi
 
-A Ruby-lang wrapper for Ontraport's REST JSON API 
+A Ruby Client for Ontraport's REST JSON API 
 
 https://api.ontraport.com/doc/
 
