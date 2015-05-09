@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = OntraportApi::VERSION
   spec.authors       = ['Jimmy Ngu']
   spec.email         = ['jimmynguyc@gmail.com']
-  spec.summary       = %q{Ruby Client for Ontraport JSON API}
-  spec.description   = %q{API client with support for Ontraport's JSON API endpoints.}
+  spec.summary       = %q{Ruby Client for Ontraport's JSON API}
+  spec.description   = %q{Ruby client for Ontraport's JSON API}
   spec.homepage      = 'https://github.com/jimmynguyc/ontraport_api'
   spec.license       = 'MIT'
 
