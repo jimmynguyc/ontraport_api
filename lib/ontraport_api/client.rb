@@ -1,5 +1,9 @@
-require_relative 'apis/products'
+require_relative 'apis/contacts'
 require_relative 'apis/forms'
+require_relative 'apis/messages'
+require_relative 'apis/products'
+require_relative 'apis/tasks'
+require_relative 'apis/transactions'
 
 module OntraportApi
   class Client
@@ -9,7 +13,9 @@ module OntraportApi
     include APIs::Contacts
     include APIs::Products
     include APIs::Forms
-
+    include APIs::Messages
+    include APIs::Tasks
+    include APIs::Transactions
 
     class InvalidAppIdOrApiKey < StandardError
       def to_s
@@ -22,7 +28,6 @@ module OntraportApi
         "Invalid API Method or Path"
       end
     end
-
 
     def initialize(app_id, api_key)
       raise InvalidAppIdOrApiKey if [app_id, api_key].any? { |w| w !~ blank_regex }

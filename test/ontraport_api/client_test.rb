@@ -11,5 +11,4 @@ describe OntraportApi::Client do
     end
   end
 
-
 end

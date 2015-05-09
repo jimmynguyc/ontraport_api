@@ -2,7 +2,7 @@ module OntraportApi
   module APIs
     module Contacts
       CONTACTS_OBJECT_ID = 0
-      CONTACTS_API_METHODS_PATHS = {
+      CONTACTS_API_METHODS_AND_PATHS = {
         'get_contact'     => [:get,     '/object'],
         'new_contact'     => [:post,    '/objects'],
         'update_contact'  => [:put,     '/objects'],
@@ -60,8 +60,8 @@ module OntraportApi
         query_contacts(payload)
       end
 
-      def query_contacts(method, payload)
-        method, path = CONTACTS_API_METHODS_PATHS[caller[0][/`.*'/][1..-2]]
+      def query_contacts(payload)
+        method, path = CONTACTS_API_METHODS_AND_PATHS[caller[0][/`.*'/][1..-2]]
         query(method, path, payload.merge({ objectID: CONTACTS_OBJECT_ID }))
       end
     end
