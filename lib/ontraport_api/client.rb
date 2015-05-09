@@ -40,7 +40,11 @@ module OntraportApi
 
     def query(method, path, payload = {})
       raise InvalidAPIMethodOrPath if [method, path].any? { |w| w !~ blank_regex }
-      self.call(method, path, payload)
+      self.class.send(method, path, query: payload, headers: api_credentials_headers )
+    end
+
+    def api_credentials_headers
+      { 'Api-Appid' => @app_id, 'Api-Key' => @api_key }
     end
 
     def blank_regex
