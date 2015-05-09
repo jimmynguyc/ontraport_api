@@ -3,6 +3,7 @@ require_relative 'apis/contacts'
 require_relative 'apis/forms'
 require_relative 'apis/messages'
 require_relative 'apis/products'
+require_relative 'apis/sequences'
 require_relative 'apis/tasks'
 require_relative 'apis/transactions'
 
@@ -15,6 +16,8 @@ module OntraportApi
     include APIs::Products
     include APIs::Forms
     include APIs::Messages
+    include APIs::Products
+    include APIs::Sequences
     include APIs::Tasks
     include APIs::Transactions
 
