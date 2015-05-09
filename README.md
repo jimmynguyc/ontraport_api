@@ -1,5 +1,7 @@
 # OntraportApi
 
+[![Gem Version](https://badge.fury.io/rb/ontraport_api.svg)](http://badge.fury.io/rb/ontraport_api)
+
 A Ruby Client for Ontraport's REST JSON API 
 
 https://api.ontraport.com/doc/
