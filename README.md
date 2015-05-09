@@ -49,10 +49,20 @@ client.get_contacts(search_criteria)
 
 See https://api.ontraport.com/doc/ on details of parameters.
 
+Note: Products API not available yet at the new JSON API.
+
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/ontraport_api/fork )
+1. Fork it ( https://github.com/jimmynguyc/ontraport_api/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+
+## TODO Lists
+
+- Forms API
+- Transactions API
+- Messages API
+- Tasks API
