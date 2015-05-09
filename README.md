@@ -38,13 +38,13 @@ puts search_results['data']
 ### Contacts
 
 ```ruby
-client.get_contact(id)
-client.new_contact(contact_params)
-client.update_contact(contact_params)
-client.contact_fields(format)
-client.add_tags(tag_ids, contacts_criteria)
-client.remove_tags(tag_ids, contacts_criteria)
-client.get_contacts(search_criteria)
+client.get_contact(id)  # Get a Contact's Data
+client.new_contact(contact_params)  # Create new Contact
+client.update_contact(id, contact_params)   # Update Contact Details
+client.contact_fields(format)   # Fetch Contact Meta Fields
+client.add_tags(tag_ids, contacts_criteria)     # Add Tags to Selected Contacts
+client.remove_tags(tag_ids, contacts_criteria)  # Remove Tags from Selected Contacts
+client.get_contacts(search_criteria)    # Get List of Contacts based on Search Criteria
 ```
 
 See https://api.ontraport.com/doc/ on details of parameters.
