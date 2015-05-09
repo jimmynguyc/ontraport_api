@@ -2,7 +2,7 @@ module OntraportApi
   module APIs
     module Tasks
       TASKS_API_METHODS_AND_PATHS = {
-        'cancel_task'     => [:post,     '/task/cancel']
+        'cancel_task'     => [:post,     '/task/cancel'],
         'complete_task'   => [:post,     '/task/complete']
       }
 
@@ -16,7 +16,7 @@ module OntraportApi
 
       def query_tasks(payload)
         method, path = TASKS_API_METHODS_AND_PATHS[caller[0][/`.*'/][1..-2]]
-        query(method, path, payload))
+        query(method, path, payload)
       end
     end
   end

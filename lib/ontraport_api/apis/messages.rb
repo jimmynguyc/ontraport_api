@@ -11,7 +11,7 @@ module OntraportApi
 
       def query_messages(payload)
         method, path = MESSAGES_API_METHODS_AND_PATHS[caller[0][/`.*'/][1..-2]]
-        query(method, path, payload))
+        query(method, path, payload)
       end
     end
   end
