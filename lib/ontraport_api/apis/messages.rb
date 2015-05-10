@@ -5,7 +5,7 @@ module OntraportApi
         'get_message'     => [:get,     '/message']
       }
 
-      def get_form(id)
+      def get_message(id)
         query_messages({id: id})
       end
 
