@@ -54,7 +54,7 @@ client.get_contacts(search_criteria)                          # Get List of Cont
 client.get_contacts_by_<field_name>(value)                    # Wildcard alias to client.get_contacts("<field_name> = 'value'")
 ```
 
-### Tags
+### Tags (experimental)
 
 ```ruby
 client.get_tags(conditions)                 # Get Tags by condition
@@ -62,7 +62,7 @@ client.new_tag(tag_name)                    # Create new Tag with tag_name
 client.get_tags_by_<field_name>(value)      # Wildcard alias to client.get_tags("<field_name> = 'value'")
 ```
 
-### Sequences
+### Sequences (experimental)
 
 ```ruby
 client.get_sequences(conditions)                # Get all sequences
@@ -70,8 +70,6 @@ client.get_sequences_by_<field_name>(value)     # Wildcard alias to client.get_s
 ```
 
 See https://api.ontraport.com/doc/ on details of parameters.
-
-Note: Products API not available yet at the new JSON API.
 
 ## Contributing
 
@@ -88,6 +86,15 @@ Note: Products API not available yet at the new JSON API.
 - Transactions API
 - Messages API
 - Tasks API
+- Products API
+
+
+## Experimental / Missing Endpoints
+
+Many element endpoints are experimental since the JSON API is so new and documentation is lacking in general. I'm working with the "objects" API endpoint mostly for those. Will update as they become available.
+
+Otherwise, they're missing because I haven't got to them yet. Check the TODO list and let me know if I've missed anything.
+
 
 ## Release Notes
 
