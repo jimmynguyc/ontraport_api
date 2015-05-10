@@ -92,7 +92,7 @@ Note: Products API not available yet at the new JSON API.
 ## Release Notes
 
 #### v0.0.4
-- Tags
+- Add Tags API
 - Wildcard field_name search
 - Error handling with error message hash
 
