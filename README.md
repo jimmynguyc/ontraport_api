@@ -77,8 +77,8 @@ Note: Products API not available yet at the new JSON API.
 
 ## Release Notes
 
-### v0.0.3
+#### v0.0.3
 - Add Sequences API
 
-### v0.0.1
+#### v0.0.1
 - Contacts API
