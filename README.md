@@ -98,6 +98,11 @@ Otherwise, they're missing because I haven't got to them yet. Check the TODO lis
 
 ## Release Notes
 
+#### v0.1.0
+- Fix bug on PUT methods
+- Fix bug on add / remove Contact Tags
+- Bump minor version
+
 #### v0.0.4
 - Add Tags API
 - Wildcard field_name search
