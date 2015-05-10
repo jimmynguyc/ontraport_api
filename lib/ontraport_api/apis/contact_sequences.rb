@@ -3,7 +3,7 @@ module OntraportApi
     module ContactSequences
       CONTACT_SEQUENCES_OBJECT_ID = 8
       CONTACT_SEQUENCES_API_METHODS_AND_PATHS = {
-        'add_sequence_to_contact' => [:post,     '/object']
+        'add_sequence_to_contact' => [:post,     '/objects']
       }
 
       def add_sequence_to_contact(sequence_id, contact_id)
