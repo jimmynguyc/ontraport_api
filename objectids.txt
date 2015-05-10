@@ -6,7 +6,7 @@
 5 - Sequences
 6 - ?
 7 - Messages
-8 - ?
+8 - Contact Sequences
 9 - Sequences Steps
 10 - ?
 11 - ?
