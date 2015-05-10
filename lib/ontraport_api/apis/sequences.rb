@@ -6,8 +6,8 @@ module OntraportApi
         'get_sequences'     => [:get,     '/objects']
       }
 
-      def get_sequences
-        query_sequences
+      def get_sequences(condition = '')
+        query_sequences({ condition: condition })
       end
 
       def query_sequences(payload = {})

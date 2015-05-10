@@ -41,6 +41,20 @@ module OntraportApi
       @api_key = api_key
     end
 
+    def method_missing(method, *args, &block)
+      if method.to_s =~ /^get_[\w]+_by_[\w]+/
+        match, subject, keyword = method.to_s.match(/^get_(\w+)_by_(\w+)/).to_a
+
+        if !respond_to?("get_#{subject}".to_sym) || [subject, keyword].any? { |w| w !~ blank_regex }
+          return super
+        end
+
+        self.send("get_#{subject}", "#{keyword} = '#{args[0]}'")
+      else
+        super
+      end
+    end
+
     private
 
     def query(method, path, payload = {})

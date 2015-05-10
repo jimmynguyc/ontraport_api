@@ -3,13 +3,13 @@ module OntraportApi
     module Contacts
       CONTACTS_OBJECT_ID = 0
       CONTACTS_API_METHODS_AND_PATHS = {
-        'get_contact'     => [:get,     '/object'],
-        'new_contact'     => [:post,    '/objects'],
-        'update_contact'  => [:put,     '/objects'],
-        'get_contacts'    => [:get,     '/objects'],
-        'contact_fields'  => [:get,     '/objects/meta'],
-        'add_tags'        => [:put,     '/objects/tag'],
-        'remove_tags'     => [:delete,  '/objects/tag']
+        'get_contact'                 => [:get,     '/object'],
+        'new_contact'                 => [:post,    '/objects'],
+        'update_contact'              => [:put,     '/objects'],
+        'get_contacts'                => [:get,     '/objects'],
+        'contact_fields'              => [:get,     '/objects/meta'],
+        'add_tags_to_contacts'        => [:put,     '/objects/tag'],
+        'remove_tags_from_contacts'   => [:delete,  '/objects/tag']
       }
 
       def get_contact(id)
@@ -30,7 +30,7 @@ module OntraportApi
         query_contacts(format)
       end
 
-      def add_tags(tag_ids, conditions = {})
+      def add_tags_to_contacts(tag_ids, conditions = {})
         default_conditions = {
           performAll: true,
           sortDir: 'asc',
@@ -40,7 +40,7 @@ module OntraportApi
         query_contacts(conditions.merge({ add_list: tag_ids }))
       end
 
-      def remove_tags(tag_ids, conditions = {})
+      def remove_tags_from_contacts(tag_ids, conditions = {})
         default_conditions = {
           performAll: true,
           sortDir: 'asc',
@@ -51,6 +51,7 @@ module OntraportApi
       end
 
       def get_contacts(conditions = {})
+        conditions = { condition: conditions } if conditions.is_a? String
         default_conditions = {
           performAll: true,
           sortDir: 'asc',
@@ -64,6 +65,7 @@ module OntraportApi
         method, path = CONTACTS_API_METHODS_AND_PATHS[caller[0][/`.*'/][1..-2]]
         query(method, path, payload.merge({ objectID: CONTACTS_OBJECT_ID }))
       end
+
     end
   end
 end

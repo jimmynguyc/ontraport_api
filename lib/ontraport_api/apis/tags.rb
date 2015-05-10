@@ -7,8 +7,8 @@ module OntraportApi
         'new_tag'     => [:post,    '/objects'],
       }
 
-      def get_tags
-        query_tags
+      def get_tags(condition = '')
+        query_tags({ condition: condition })
       end
 
       def new_tag(tag_name)
