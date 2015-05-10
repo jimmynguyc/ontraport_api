@@ -31,23 +31,25 @@ module OntraportApi
       end
 
       def add_tags_to_contacts(tag_ids, conditions = {})
+        conditions = { condition: conditions } if conditions.is_a? String
         default_conditions = {
-          performAll: true,
-          sortDir: 'asc',
-          searchNotes: 'true'
+          performAll: true
         }
+        conditions = default_conditions.merge(conditions)
+
         tag_ids = tag_ids.is_a?(Array) ? tag_ids.join(',') : tag_ids
         query_contacts(conditions.merge({ add_list: tag_ids }))
       end
 
       def remove_tags_from_contacts(tag_ids, conditions = {})
+        conditions = { condition: conditions } if conditions.is_a? String
         default_conditions = {
-          performAll: true,
-          sortDir: 'asc',
-          searchNotes: 'true'
+          performAll: true
         }
+        conditions = default_conditions.merge(conditions)
+
         tag_ids = tag_ids.is_a?(Array) ? tag_ids.join(',') : tag_ids
-        query_contacts(conditions.merge({ add_list: tag_ids }))
+        query_contacts(conditions.merge({ remove_list: tag_ids }))
       end
 
       def get_contacts(conditions = {})
