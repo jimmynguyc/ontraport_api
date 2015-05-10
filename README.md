@@ -74,3 +74,11 @@ Note: Products API not available yet at the new JSON API.
 - Transactions API
 - Messages API
 - Tasks API
+
+## Release Notes
+
+### v0.0.3
+- Add Sequences API
+
+### v0.0.1
+- Contacts API
