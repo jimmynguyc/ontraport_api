@@ -4,6 +4,7 @@ require_relative 'apis/forms'
 require_relative 'apis/messages'
 require_relative 'apis/products'
 require_relative 'apis/sequences'
+require_relative 'apis/tags'
 require_relative 'apis/tasks'
 require_relative 'apis/transactions'
 
@@ -18,6 +19,7 @@ module OntraportApi
     include APIs::Messages
     include APIs::Products
     include APIs::Sequences
+    include APIs::Tags
     include APIs::Tasks
     include APIs::Transactions
 
@@ -43,7 +45,13 @@ module OntraportApi
 
     def query(method, path, payload = {})
       raise InvalidAPIMethodOrPath if [method, path].any? { |w| w !~ blank_regex } || ![:get, :post, :put, :delete].include?(method)
-      self.class.send(method, path, query: payload, headers: api_credentials_headers ).parsed_response
+      response = self.class.send(method, path, query: payload, headers: api_credentials_headers )
+      response.parsed_response
+    rescue JSON::ParserError => e
+      {
+        'error'   => true,
+        'message' => response.body
+      }
     end
 
     def api_credentials_headers
