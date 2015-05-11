@@ -31,13 +31,49 @@ require 'ontraport_api'
 
 client = OntraportApi::Client.new('app-id','app-key')
 
-search_results = client.get_contacts({ condition: "email = 'me@jimmyngu.com'" })
-puts search_results['data']
+search_results = client.get_contacts({ condition: "email = 'me@jimmyngu.com' AND lastname = 'Ngu'" })
+puts search_results
 
 # Error handling
 puts search_results['error']    # true if error
 puts search_results['message']  # API response body when error
 ```
+
+Finding Contacts:
+
+```ruby
+contact = client.get_contacts_by_email('me@jimmyngu.com').first
+if contact.nil?
+    contact = client.new_contact({ firstname: 'Jimmy', lastname: 'Ngu', email: 'me@jimmyngu.com' })
+end
+```
+
+
+Adding Tags to Contacts:
+
+```ruby
+tag_name = 'Customer'
+tag = client.get_tags_by_tag_name(tag_name).first
+if tag.nil?
+    tag = client.new_tag(tag_name)
+end
+
+client.add_tags_to_contacts(tag['tag_id'], { ids: contact['id'] })
+
+# Multiple tags & contacts
+client.add_tags_to_contacts('<tag_id_1>,<tag_id_2>,<tag_id_3>', { ids: '<contact_id_1>,<contact_id_2>,<contact_id_3>' })
+
+# Tag contacts with conditions
+client.add_tags_to_contacts('<tag_id>', "city = 'Kuala Lumpur'" )
+```
+
+Adding Sequence to Contact:
+
+```ruby
+sequence = client.get_sequences_by_name('Sales Funnel')
+client.add_sequence_to_contact(sequence['drip_id'], contact['id'])
+```
+
 
 ## Supported APIs
 
@@ -103,6 +139,9 @@ Otherwise, they're missing because I haven't got to them yet. Check the TODO lis
 
 
 ## Release Notes
+
+#### v0.2.0
+- Return ['data'] as default (breaking v0.1 implementations with ['data'])
 
 #### v0.1.1
 - Add Contact Sequence API
