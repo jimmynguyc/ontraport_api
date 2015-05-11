@@ -22,6 +22,46 @@ Or install it yourself as:
 
     $ gem install ontraport_api
 
+
+## Supported APIs
+
+### Contacts
+
+```ruby
+client.get_contact(id)                                        # Get a Contact's Data
+client.new_contact(contact_params)                            # Create new Contact
+client.update_contact(id, contact_params)                     # Update Contact Details
+client.contact_fields(format)                                 # Fetch Contact Meta Fields
+client.add_tags_to_contacts(tag_ids, contacts_criteria)       # Add Tags to Selected Contacts
+client.remove_tags_from_contacts(tag_ids, contacts_criteria)  # Remove Tags from Selected Contacts
+client.get_contacts(search_criteria)                          # Get List of Contacts based on Search Criteria
+client.get_contacts_by_<field_name>(value)                    # Wildcard alias to client.get_contacts("<field_name> = 'value'")
+```
+
+### Tags (experimental)
+
+```ruby
+client.get_tags(conditions)                 # Get Tags by condition
+client.new_tag(tag_name)                    # Create new Tag with tag_name
+client.get_tags_by_<field_name>(value)      # Wildcard alias to client.get_tags("<field_name> = 'value'")
+```
+
+### Sequences (experimental)
+
+```ruby
+client.get_sequences(conditions)                # Get all sequences
+client.get_sequences_by_<field_name>(value)     # Wildcard alias to client.get_sequences("<field_name> = 'value'")
+```
+
+### Contact Sequences (experimental)
+
+```ruby
+client.add_sequence_to_contact(sequence_drip_id, contact_id)    # Add Sequence to Contact
+```
+
+See https://api.ontraport.com/doc/ on details of parameters.
+
+
 ## Usage
 
 Basic example: 
@@ -80,45 +120,6 @@ sequence = client.get_sequences_by_name('Sales Funnel')
 result = client.add_sequence_to_contact(sequence['drip_id'], contact['id'])
 puts 'Success' if result['error'].nil?
 ```
-
-
-## Supported APIs
-
-### Contacts
-
-```ruby
-client.get_contact(id)                                        # Get a Contact's Data
-client.new_contact(contact_params)                            # Create new Contact
-client.update_contact(id, contact_params)                     # Update Contact Details
-client.contact_fields(format)                                 # Fetch Contact Meta Fields
-client.add_tags_to_contacts(tag_ids, contacts_criteria)       # Add Tags to Selected Contacts
-client.remove_tags_from_contacts(tag_ids, contacts_criteria)  # Remove Tags from Selected Contacts
-client.get_contacts(search_criteria)                          # Get List of Contacts based on Search Criteria
-client.get_contacts_by_<field_name>(value)                    # Wildcard alias to client.get_contacts("<field_name> = 'value'")
-```
-
-### Tags (experimental)
-
-```ruby
-client.get_tags(conditions)                 # Get Tags by condition
-client.new_tag(tag_name)                    # Create new Tag with tag_name
-client.get_tags_by_<field_name>(value)      # Wildcard alias to client.get_tags("<field_name> = 'value'")
-```
-
-### Sequences (experimental)
-
-```ruby
-client.get_sequences(conditions)                # Get all sequences
-client.get_sequences_by_<field_name>(value)     # Wildcard alias to client.get_sequences("<field_name> = 'value'")
-```
-
-### Contact Sequences (experimental)
-
-```ruby
-client.add_sequence_to_contact(sequence_drip_id, contact_id)    # Add Sequence to Contact
-```
-
-See https://api.ontraport.com/doc/ on details of parameters.
 
 ## Contributing
 
