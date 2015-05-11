@@ -31,7 +31,7 @@ require 'ontraport_api'
 
 client = OntraportApi::Client.new('app-id','app-key')
 
-search_results = client.get_contacts({ condition: "email = 'me@jimmyngu.com' AND lastname = 'Ngu'" })
+search_results = client.get_contacts("email = 'me@jimmyngu.com' AND lastname = 'Ngu'")
 puts search_results
 
 # Error handling
