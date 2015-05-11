@@ -1,4 +1,4 @@
-# OntraportApi
+# Ontraport API
 
 [![Gem Version](https://badge.fury.io/rb/ontraport_api.svg)](http://badge.fury.io/rb/ontraport_api)
 
