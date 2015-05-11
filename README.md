@@ -43,11 +43,16 @@ Finding Contacts:
 
 ```ruby
 contact = client.get_contacts_by_email('me@jimmyngu.com').first
-if contact.nil?
-    contact = client.new_contact({ firstname: 'Jimmy', lastname: 'Ngu', email: 'me@jimmyngu.com' })
-end
+contact = client.get_contacts_by_city('Kuala Lumpur').first
+contact = client.get_contacts_by_sms_number('+60123456789').first
 ```
 
+Create New Contact:
+
+```ruby
+contact = client.new_contact({ firstname: 'Jimmy', lastname: 'Ngu', email: 'me@jimmyngu.com' })
+puts 'Success' if contact['error'].nil?
+```
 
 Adding Tags to Contacts:
 
@@ -58,7 +63,8 @@ if tag.nil?
     tag = client.new_tag(tag_name)
 end
 
-client.add_tags_to_contacts(tag['tag_id'], { ids: contact['id'] })
+result = client.add_tags_to_contacts(tag['tag_id'], { ids: contact['id'] })
+puts 'Success' if result['error'].nil?
 
 # Multiple tags & contacts
 client.add_tags_to_contacts('<tag_id_1>,<tag_id_2>,<tag_id_3>', { ids: '<contact_id_1>,<contact_id_2>,<contact_id_3>' })
@@ -71,7 +77,8 @@ Adding Sequence to Contact:
 
 ```ruby
 sequence = client.get_sequences_by_name('Sales Funnel')
-client.add_sequence_to_contact(sequence['drip_id'], contact['id'])
+result = client.add_sequence_to_contact(sequence['drip_id'], contact['id'])
+puts 'Success' if result['error'].nil?
 ```
 
 
