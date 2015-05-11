@@ -1,4 +1,4 @@
-# OntraportApi
+# Ontraport API
 
 [![Gem Version](https://badge.fury.io/rb/ontraport_api.svg)](http://badge.fury.io/rb/ontraport_api)
 
@@ -69,6 +69,12 @@ client.get_sequences(conditions)                # Get all sequences
 client.get_sequences_by_<field_name>(value)     # Wildcard alias to client.get_sequences("<field_name> = 'value'")
 ```
 
+### Contact Sequences (experimental)
+
+```ruby
+client.add_sequence_to_contact(sequence_drip_id, contact_id)    # Add Sequence to Contact
+```
+
 See https://api.ontraport.com/doc/ on details of parameters.
 
 ## Contributing
@@ -97,6 +103,9 @@ Otherwise, they're missing because I haven't got to them yet. Check the TODO lis
 
 
 ## Release Notes
+
+#### v0.1.1
+- Add Contact Sequence API
 
 #### v0.1.0
 - Fix bug on PUT methods
