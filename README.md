@@ -25,6 +25,15 @@ Or install it yourself as:
 
 ## Supported APIs
 
+### Objects
+
+```ruby
+client.get_object(id, object_id)                              # Get an Object's Data
+client.new_object(object_params, object_id)                   # Create new Object
+client.update_object(id, object_params, object_id)            # Update Object Details
+client.get_objects(search_criteria, object_id)                # Get List of Objects based on Search Criteria
+```
+
 ### Contacts
 
 ```ruby
@@ -147,6 +156,9 @@ Otherwise, they're missing because I haven't got to them yet. Check the TODO lis
 
 
 ## Release Notes
+
+#### v0.2.1
+- Added generic Object query
 
 #### v0.2.0
 - Return ['data'] as default (breaking v0.1 implementations with ['data'])

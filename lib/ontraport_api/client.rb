@@ -19,6 +19,7 @@ module OntraportApi
     include APIs::Products
     include APIs::Forms
     include APIs::Messages
+    include APIs::Objects
     include APIs::Products
     include APIs::Sequences
     include APIs::Tags
