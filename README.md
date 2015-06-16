@@ -157,7 +157,7 @@ Otherwise, they're missing because I haven't got to them yet. Check the TODO lis
 
 ## Release Notes
 
-#### v0.2.1
+#### v0.2.2
 - Added generic Object query
 
 #### v0.2.0
