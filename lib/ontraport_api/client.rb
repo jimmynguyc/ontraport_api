@@ -1,6 +1,5 @@
 require 'httparty'
 require_relative 'apis/contacts'
-require_relative 'apis/contact_sequences'
 require_relative 'apis/forms'
 require_relative 'apis/messages'
 require_relative 'apis/objects'
@@ -16,7 +15,6 @@ module OntraportApi
     base_uri 'https://api.ontraport.com/1'
 
     include APIs::Contacts
-    include APIs::ContactSequences
     include APIs::Products
     include APIs::Forms
     include APIs::Messages

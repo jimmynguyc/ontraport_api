@@ -24,6 +24,15 @@ module OntraportApi
         query_contacts(payload.merge(id: id))
       end
 
+      def add_sequences_to_contact(id, sequence_ids)
+        sequence_ids = sequence_ids.is_a?(Array) ? sequence_ids.join('*/*') : sequence_ids
+        query_contacts(payload.merge(id: id, updateSequence: "*/*#{sequence_ids}*/*"))
+      end
+
+      def add_tags_to_contact(id, tag_ids)
+        add_tags_to_contacts(tag_ids, "id = #{id}")
+      end
+
       def contact_fields(format = {})
         default_format = { format: 'byId' }
         format = default_format.merge(format)

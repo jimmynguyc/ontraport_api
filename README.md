@@ -41,13 +41,15 @@ client.get_contact(id)                                        # Get a Contact's 
 client.new_contact(contact_params)                            # Create new Contact
 client.update_contact(id, contact_params)                     # Update Contact Details
 client.contact_fields(format)                                 # Fetch Contact Meta Fields
-client.add_tags_to_contacts(tag_ids, contacts_criteria)       # Add Tags to Selected Contacts
+client.add_sequences_to_contact(id, sequence_ids)             # Add Sequences (Array / String) to Contact
+client.add_tags_to_contact(id, tag_ids)                       # Add Tags (Array / String) to Contact
+client.add_tags_to_contacts(tag_ids, contacts_criteria)       # Add Tags (Array / String) to Selected Contacts
 client.remove_tags_from_contacts(tag_ids, contacts_criteria)  # Remove Tags from Selected Contacts
 client.get_contacts(search_criteria)                          # Get List of Contacts based on Search Criteria
 client.get_contacts_by_<field_name>(value)                    # Wildcard alias to client.get_contacts("<field_name> = 'value'")
 ```
 
-### Tags (experimental)
+### Tags
 
 ```ruby
 client.get_tags(conditions)                 # Get Tags by condition
@@ -55,17 +57,11 @@ client.new_tag(tag_name)                    # Create new Tag with tag_name
 client.get_tags_by_<field_name>(value)      # Wildcard alias to client.get_tags("<field_name> = 'value'")
 ```
 
-### Sequences (experimental)
+### Sequences
 
 ```ruby
 client.get_sequences(conditions)                # Get all sequences
 client.get_sequences_by_<field_name>(value)     # Wildcard alias to client.get_sequences("<field_name> = 'value'")
-```
-
-### Contact Sequences (experimental)
-
-```ruby
-client.add_sequence_to_contact(sequence_drip_id, contact_id)    # Add Sequence to Contact
 ```
 
 See https://api.ontraport.com/doc/ on details of parameters.
@@ -156,6 +152,10 @@ Otherwise, they're missing because I haven't got to them yet. Check the TODO lis
 
 
 ## Release Notes
+
+#### v0.3.0
+- Deprecated #add_sequence_to_contact in favour of #add_sequences_to_contact since it did not trigger sequence immediately
+- Breaks v0.2.2 implementation
 
 #### v0.2.2
 - Added generic Object query
