@@ -6,8 +6,10 @@ module OntraportApi
         'get_contact'                 => [:get,     '/object'],
         'new_contact'                 => [:post,    '/objects'],
         'update_contact'              => [:put,     '/objects'],
+        'add_sequences_to_contact'    => [:put,     '/objects'],
         'get_contacts'                => [:get,     '/objects'],
         'contact_fields'              => [:get,     '/objects/meta'],
+        'add_tags_to_contact'         => [:put,     '/objects/tag'],
         'add_tags_to_contacts'        => [:put,     '/objects/tag'],
         'remove_tags_from_contacts'   => [:delete,  '/objects/tag']
       }
@@ -26,7 +28,7 @@ module OntraportApi
 
       def add_sequences_to_contact(id, sequence_ids)
         sequence_ids = sequence_ids.is_a?(Array) ? sequence_ids.join('*/*') : sequence_ids
-        query_contacts(payload.merge(id: id, updateSequence: "*/*#{sequence_ids}*/*"))
+        query_contacts({ id: id, updateSequence: "*/*#{sequence_ids}*/*" })
       end
 
       def add_tags_to_contact(id, tag_ids)
