@@ -122,7 +122,7 @@ Adding Sequence to Contact:
 
 ```ruby
 sequence = client.get_sequences_by_name('Sales Funnel')
-result = client.add_sequence_to_contact(sequence['drip_id'], contact['id'])
+result = client.add_sequences_to_contact(contact['id'], sequence['drip_id'])
 puts 'Success' if result['error'].nil?
 ```
 
