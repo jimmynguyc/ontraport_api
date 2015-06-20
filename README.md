@@ -153,7 +153,7 @@ Otherwise, they're missing because I haven't got to them yet. Check the TODO lis
 
 ## Release Notes
 
-#### v0.3.0
+#### v0.3.1
 - Deprecated #add_sequence_to_contact in favour of #add_sequences_to_contact since it did not trigger sequence immediately
 - Breaks v0.2.2 implementation
 
