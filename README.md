@@ -2,9 +2,9 @@
 
 [![Gem Version](https://badge.fury.io/rb/ontraport_api.svg)](http://badge.fury.io/rb/ontraport_api)
 
-A Ruby Client for Ontraport's REST JSON API 
+A Ruby Client for Ontraport's REST JSON API
 
-https://api.ontraport.com/doc/
+<https://api.ontraport.com/doc/>
 
 ## Installation
 
@@ -16,12 +16,15 @@ gem 'ontraport_api'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install ontraport_api
-
+```
+$ gem install ontraport_api
+```
 
 ## Supported APIs
 
@@ -37,16 +40,18 @@ client.get_objects(search_criteria, object_id)                # Get List of Obje
 ### Contacts
 
 ```ruby
-client.get_contact(id)                                        # Get a Contact's Data
-client.new_contact(contact_params)                            # Create new Contact
-client.update_contact(id, contact_params)                     # Update Contact Details
-client.contact_fields(format)                                 # Fetch Contact Meta Fields
-client.add_sequences_to_contact(id, sequence_ids)             # Add Sequences (Array / String) to Contact
-client.add_tags_to_contact(id, tag_ids)                       # Add Tags (Array / String) to Contact
-client.add_tags_to_contacts(tag_ids, contacts_criteria)       # Add Tags (Array / String) to Selected Contacts
-client.remove_tags_from_contacts(tag_ids, contacts_criteria)  # Remove Tags from Selected Contacts
-client.get_contacts(search_criteria)                          # Get List of Contacts based on Search Criteria
-client.get_contacts_by_<field_name>(value)                    # Wildcard alias to client.get_contacts("<field_name> = 'value'")
+client.get_contact(id)                                            # Get a Contact's Data
+client.new_contact(contact_params)                                # Create new Contact
+client.update_contact(id, contact_params)                         # Update Contact Details
+client.contact_fields(format)                                     # Fetch Contact Meta Fields
+client.replace_sequences_for_contact(id, sequence_ids)            # Replace Sequences (Array / String) for Contact
+client.add_sequences_to_contact(id, sequence_ids)                 # Add Sequences (Array / String) to Contact
+client.add_sequences_to_contacts(sequence_ids, contacts_criteria) # Add Sequences (Array / String) to Selected Contacts
+client.add_tags_to_contact(id, tag_ids)                           # Add Tags (Array / String) to Contact
+client.add_tags_to_contacts(tag_ids, contacts_criteria)           # Add Tags (Array / String) to Selected Contacts
+client.remove_tags_from_contacts(tag_ids, contacts_criteria)      # Remove Tags from Selected Contacts
+client.get_contacts(search_criteria)                              # Get List of Contacts based on Search Criteria
+client.get_contacts_by_<field_name>(value)                        # Wildcard alias to client.get_contacts("<field_name> = 'value'")
 ```
 
 ### Tags
@@ -64,12 +69,11 @@ client.get_sequences(conditions)                # Get all sequences
 client.get_sequences_by_<field_name>(value)     # Wildcard alias to client.get_sequences("<field_name> = 'value'")
 ```
 
-See https://api.ontraport.com/doc/ on details of parameters.
-
+See <https://api.ontraport.com/doc/> on details of parameters.
 
 ## Usage
 
-Basic example: 
+Basic example:
 
 ```ruby
 require 'ontraport_api'
@@ -128,12 +132,11 @@ puts 'Success' if result['error'].nil?
 
 ## Contributing
 
-1. Fork it ( https://github.com/jimmynguyc/ontraport_api/fork )
+1. Fork it ( <https://github.com/jimmynguyc/ontraport_api/fork> )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
 
 ## TODO Lists
 
@@ -143,41 +146,53 @@ puts 'Success' if result['error'].nil?
 - Tasks API
 - Products API
 
-
 ## Experimental / Missing Endpoints
 
 Many element endpoints are experimental since the JSON API is so new and documentation is lacking in general. I'm working with the "objects" API endpoint mostly for those. Will update as they become available.
 
 Otherwise, they're missing because I haven't got to them yet. Check the TODO list and let me know if I've missed anything.
 
-
 ## Release Notes
 
-#### v0.3.1
-- Deprecated #add_sequence_to_contact in favour of #add_sequences_to_contact since it did not trigger sequence immediately
+### v0.4.0
+
+- Rename `#add_sequences_to_contact` to `#replace_sequences_for_contact` since that's what it does
+- Added `#add_sequences_to_contact` and `#add_sequence_to_contact` since the endpoints are available now
+- Breaks v0.3.1 implementation
+
+### v0.3.1
+
+- Deprecated `#add_sequence_to_contact` in favor of `#add_sequences_to_contact` (note the extra `s`) since it did not trigger sequence immediately
 - Breaks v0.2.2 implementation
 
-#### v0.2.2
+### v0.2.2
+
 - Added generic Object query
 
-#### v0.2.0
+### v0.2.0
+
 - Return ['data'] as default (breaking v0.1 implementations with ['data'])
 
-#### v0.1.1
+### v0.1.1
+
 - Add Contact Sequence API
 
-#### v0.1.0
+### v0.1.0
+
 - Fix bug on PUT methods
 - Fix bug on add / remove Contact Tags
 - Bump minor version
 
-#### v0.0.4
+### v0.0.4
+
 - Add Tags API
 - Wildcard field_name search
 - Error handling with error message hash
 
-#### v0.0.3
+### v0.0.3
+
 - Add Sequences API
 
-#### v0.0.1
+### v0.0.1
+
 - Contacts API

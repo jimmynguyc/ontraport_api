@@ -6,9 +6,11 @@ module OntraportApi
         'get_contact'                 => [:get,     '/object'],
         'new_contact'                 => [:post,    '/objects'],
         'update_contact'              => [:put,     '/objects'],
-        'add_sequences_to_contact'    => [:put,     '/objects'],
+        'replace_sequences_of_contact' => [:put,     '/objects'],
         'get_contacts'                => [:get,     '/objects'],
         'contact_fields'              => [:get,     '/objects/meta'],
+        'add_sequences_to_contact'    => [:put,     '/objects/sequence'],
+        'add_sequences_to_contacts'   => [:put,     '/objects/sequence'],
         'add_tags_to_contact'         => [:put,     '/objects/tag'],
         'add_tags_to_contacts'        => [:put,     '/objects/tag'],
         'remove_tags_from_contacts'   => [:delete,  '/objects/tag']
@@ -27,18 +29,33 @@ module OntraportApi
       end
 
       def add_sequences_to_contact(id, sequence_ids)
-        sequence_ids = sequence_ids.is_a?(Array) ? sequence_ids.join('*/*') : sequence_ids
-        query_contacts({ id: id, updateSequence: "*/*#{sequence_ids}*/*" })
+        add_sequences_to_contacts(sequence_ids, "id = #{id}")
       end
 
-      def add_tags_to_contact(id, tag_ids)
-        add_tags_to_contacts(tag_ids, "id = #{id}")
+      def add_sequences_to_contacts(sequence_ids, conditions = {})
+        conditions = { condition: conditions } if conditions.is_a? String
+        default_conditions = {
+          performAll: true
+        }
+        conditions = default_conditions.merge(conditions)
+
+        sequence_ids = sequence_ids.is_a?(Array) ? sequence_ids.join(',') : sequence_ids
+        query_contacts(conditions.merge({ add_list: tag_ids }))
+      end
+
+      def replace_sequences_of_contact(id, sequence_ids)
+        sequence_ids = sequence_ids.is_a?(Array) ? sequence_ids.join('*/*') : sequence_ids
+        query_contacts({ id: id, updateSequence: "*/*#{sequence_ids}*/*" })
       end
 
       def contact_fields(format = {})
         default_format = { format: 'byId' }
         format = default_format.merge(format)
         query_contacts(format)
+      end
+
+      def add_tags_to_contact(id, tag_ids)
+        add_tags_to_contacts(tag_ids, "id = #{id}")
       end
 
       def add_tags_to_contacts(tag_ids, conditions = {})
