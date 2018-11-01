@@ -62,10 +62,19 @@ module OntraportApi
     def query(method, path, payload = {})
       raise InvalidAPIMethodOrPath if [method, path].any? { |w| w !~ blank_regex } || ![:get, :post, :put, :delete].include?(method)
       response = self.class.send(method, path, query: payload, body: payload, headers: api_credentials_headers )
-      response.parsed_response['data']
+      if response.parsed_response.is_a?(Hash)
+        response.parsed_response['data']
+      else
+        handle_errors_hash(response)
+      end
     rescue JSON::ParserError => e
+      handle_errors_hash(response)
+    end
+
+    def handle_errors_hash(response)
       {
         'error'   => true,
+        'status'  => response.response.code,
         'message' => response.body
       }
     end
