@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.3'
 
   spec.add_development_dependency 'bundler', '~> 2.1'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '~> 12.3.3'
   spec.add_development_dependency "minitest", '~> 5.6'
 
   spec.add_runtime_dependency 'httparty', '~> 0.13'
